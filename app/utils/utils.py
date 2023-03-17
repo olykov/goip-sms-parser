@@ -25,5 +25,5 @@ class Vars:
             if env_var_name.startswith('SIM_PORT_'):
                 port_number = int(env_var_name.split('_')[-1]) - 1
                 sim_ports[str(port_number)] = env_var_value
-            return sim_ports
+        return sim_ports
         
