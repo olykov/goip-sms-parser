@@ -18,10 +18,12 @@ class Vars:
         self.smtp_login = os.environ['SMTP_LOGIN']
         self.smtp_password = os.environ['SMTP_PASSWORD']
         self.email = os.environ['EMAIL']
-        self.ports = {
-            0: "Empty sim1",
-            1: "Empty sim2",
-            2: "Empty sim3",
-            3: "Empty sim4"
-        }
+
+    def get_port_names(self):
+        sim_ports = {}
+        for env_var_name, env_var_value in os.environ.items():
+            if env_var_name.startswith('SIM_PORT_'):
+                port_number = int(env_var_name.split('_')[-1]) - 1
+                sim_ports[str(port_number)] = env_var_value
+            return sim_ports
         

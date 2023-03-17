@@ -16,7 +16,7 @@ Email = EmailSender(smtp_login=vars.smtp_login, smtp_password=vars.smtp_password
 while True:
     messages = Goip._receive_messages()
     for i, ch_line_messages in enumerate(messages):
-        sim = vars.ports[i]
+        sim = vars.get_port_names()[i]
         for message in ch_line_messages:
             _write_status = Database.write(message)
             if _write_status:
