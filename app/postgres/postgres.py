@@ -30,9 +30,9 @@ class DbWriter:
                 return
             except psycopg2.OperationalError:
                 retry_count += 1
-                print(f"Could not connect. Attempt {retry_count}/{self.max_retries}")
+                print(f"Could not connect to {self.db_host}:{self.db_port}. Attempt {retry_count}/{self.max_retries}")
                 if retry_count >= self.max_retries:
-                    print("Error: Could not connect to the database.")
+                    print(f"Error: Could not connect to the database {self.db_host}:{self.db_port}.")
                     sys.exit(1)
                 time.sleep(self.retry_delay)
 

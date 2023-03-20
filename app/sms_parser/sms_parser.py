@@ -10,7 +10,7 @@ class GoipGateway:
         self.goip_user = goip_user
         self.goip_password = goip_password
 
-    def _receive_messages(self):
+    def receive_messages(self):
         auth_string = f"{self.goip_user}:{self.goip_password}"
         auth_header = {
             "Authorization": f"Basic {base64.b64encode(auth_string.encode('utf-8')).decode('utf-8')}"

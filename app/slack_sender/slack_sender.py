@@ -5,7 +5,7 @@ class SlackSender:
         self.slack_token = slack_token
         self.slack_channel = slack_channel
 
-    def _send(self, message, sim):
+    def send(self, message, sim):
         url = "https://slack.com/api/chat.postMessage"
         headers = {
             "Authorization": f"Bearer {self.slack_token}",
