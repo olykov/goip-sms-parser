@@ -1,6 +1,6 @@
 import os
 
-class Vars:
+class GetVars:
     def __init__(self):
         self.goip_addr = os.environ['GOIP_ADDR']
         self.goip_user = os.environ['GOIP_USER']
@@ -10,20 +10,17 @@ class Vars:
         self.db_name = os.environ['DB_NAME']
         self.db_user = os.environ['DB_USER']
         self.db_password = os.environ['DB_PASSWORD']
-        self.slack_token = os.environ['SLACK_TOKEN']
-        self.slack_channel = os.environ['SLACK_CHANNEL']
         self.max_retries = int(os.environ['MAX_RETRIES'])
-        self.timeout = int(os.environ['TIMEOUT'])
+        self.timeout = int(os.environ['SCAN_TIMEOUT'])
         self.retry_delay = int(os.environ['RETRY_DELAY'])
+        self.email = os.environ['EMAIL']
         self.smtp_login = os.environ['SMTP_LOGIN']
         self.smtp_password = os.environ['SMTP_PASSWORD']
-        self.email = os.environ['EMAIL']
+        self.slack = os.environ['SLACK']
+        self.slack_token = os.environ['SLACK_TOKEN']
 
-    def get_port_names(self):
-        sim_ports = {}
-        for env_var_name, env_var_value in os.environ.items():
-            if env_var_name.startswith('SIM_PORT_'):
-                port_number = int(env_var_name.split('_')[-1]) - 1
-                sim_ports[str(port_number)] = env_var_value
-        return sim_ports
+    def search(self, text):
+        try: val = os.environ[text]
+        except: val = None
+        return val
         

@@ -5,6 +5,7 @@ services:
     build: .
     env_file:
       - .env_goip
+      - .env_sim
     restart: always
     volumes:
       - ./app:/app
